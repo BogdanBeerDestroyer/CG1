@@ -1,30 +1,43 @@
 <!DOCTYPE html>
-<HTML>
+<HTML lang="en">
 <BODY>
 <canvas id='lab01' width='400' height='300' style="border:1px solid">
 </canvas>
 <script>
     var canvas = document.getElementById('lab01');
     var ctx = canvas.getContext('2d');
+    var psize = 1;
+    var shape_pos = 10;
+    var shape_size = 20;
 
-    var i = 0;
-    var direction = 1;
-
-    document.addEventListener("keydown", function(event) {
-        if (event.code == "ArrowRight") {
-            direction = 1;
-        } else if (event.code == "ArrowLeft") {
-            direction = -1;
+    function draw() {
+        ctx.fillStyle = "#000000";
+        for (var j = 0; j < shape_size; j++) {
+            for (var i = 0; i < shape_size; i++) {
+                ctx.fillRect((shape_pos + i) * psize, (shape_pos + j) * psize,
+                    1 * psize, 1 * psize);
+            }
         }
-    });
+    }
 
-    setInterval( function () {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#0a3588";
-        ctx.fillRect(50+i, 50, 100, 100);
-        i += direction;
-    }, 10);
+    function erase_draw() {
+        ctx.fillStyle = "#FFFFFF";
+        for (var j = 0; j < shape_size; j++) {
+            for (var i = 0; i < shape_size; i++) {
+                ctx.fillRect((shape_pos + i) * psize, (shape_pos + j) * psize,
+                    1 * psize, 1 * psize);
+            }
+        }
+    }
 
+    setInterval(function () {
+        erase_draw();
+
+        shape_pos++;
+
+        draw();
+        // erase_draw();
+    }, 100);
 </script>
 </BODY>
 </HTML>
