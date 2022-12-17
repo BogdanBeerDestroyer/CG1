@@ -4,7 +4,41 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<BODY>
+<canvas id='homework4' width="1000px" height="1000px"></canvas>
+<p id='demo'></p>
+<script>
+    let canvas = document.getElementById('homework4');
+    let ctx = canvas.getContext('2d');
 
-</body>
+    ctx.fillStyle = "#000000";
+
+    let R = 100,
+        x0 = 300,
+        y0 = 300,
+        x = 0,
+        y = R,
+        error = 1 - R;
+    ctx.fillRect(x0 + x, y0 + y, 1, 1);
+    ctx.fillRect(x0 + x, y0 - y, 1, 1);
+    while (x <= y) {
+        if (error > 0) {
+            y -= 1;
+            error += 2 * (x - y) + 5
+        } else {
+            error += 2 * x + 3;
+        }
+        x += 1;
+        ctx.fillRect(x0 + x, y0 + y, 1, 1);
+        ctx.fillRect(x0 - x, y0 - y, 1, 1);
+        ctx.fillRect(x0 - x, y0 + y, 1, 1);
+        ctx.fillRect(x0 + x, y0 - y, 1, 1);
+        ctx.fillRect(x0 + y, y0 + x, 1, 1);
+        ctx.fillRect(x0 - y, y0 - x, 1, 1);
+        ctx.fillRect(x0 + y, y0 - x, 1, 1);
+        ctx.fillRect(x0 - y, y0 + x, 1, 1);
+    }
+
+</script>
+</BODY>
 </html>

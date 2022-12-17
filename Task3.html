@@ -26,15 +26,6 @@
         var error = 0;
 
         if (Math.abs(dx) > Math.abs(dy)) {
-            // while (x !== x_end) {
-            //     error += 2 * dy;
-            //     if (Math.abs(error) >= Math.abs(dx)) {
-            //         y += sign_y;
-            //         error -= 2 * sign_x * sign_y * dx;
-            //     }
-            //     ctx.fillRect(x, y, 1, 1);
-            //     x += sign_x;
-            // }
             while (x !== x_end) {
                 error += Math.abs(dy) + 1;
                 if (Math.abs(error) >= Math.abs(dx) + 1) {
@@ -45,15 +36,6 @@
                 x += sign_x;
             }
         } else {
-            // while (y !== y_end) {
-            //     error += 2 * dx;
-            //     if (Math.abs(error) >= Math.abs(dy)) {
-            //         x += sign_x;
-            //         error -= 2 * sign_x * sign_y * dy;
-            //     }
-            //     ctx.fillRect(x, y, 1, 1);
-            //     y += sign_y;
-            // }
             while (y !== y_end) {
                 error += Math.abs(dx) + 1;
                 if (Math.abs(error) >= Math.abs(dy) + 1) {
